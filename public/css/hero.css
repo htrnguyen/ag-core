@@ -1,0 +1,113 @@
+.badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 100px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+    letter-spacing: 0.02em;
+}
+
+.hero {
+    text-align: center;
+    padding: var(--space-6) 0 var(--space-6);
+    background: transparent;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.025em;
+    margin-bottom: var(--space-3);
+    color: var(--text);
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: var(--font-weight-normal);
+}
+
+.install-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--border-radius-md);
+    font-family: "SF Mono", "Monaco", "Consolas", monospace;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-base);
+    position: relative;
+    user-select: none;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.install-box:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.cmd-content {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #666;
+    margin-right: 12px;
+}
+
+.action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+    opacity: 0.7;
+}
+
+.tooltip {
+    position: absolute;
+    top: -44px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+.small-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-3);
+}

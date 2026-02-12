@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Antigravity Core | AI Agent Standards</title>
+        <meta
+            name="description"
+            content="Antigravity Core - Enterprise-grade AI Agent standards, workflows, and skills."
+        />
+        <meta
+            property="og:title"
+            content="Antigravity Core | AI Agent Standards"
+        />
+        <meta
+            property="og:description"
+            content="Enterprise-grade AI Agent standards, workflows, and skills."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://htrnguyen.github.io/ag-core/"
+        />
+        <!-- Modern Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Icons (Phosphor Icons) -->
+        <script
+            src="https://unpkg.com/@phosphor-icons/web"
+            crossorigin="anonymous"
+        ></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="public/css/style.css" />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+        />
+    </head>
+    <body>
+        <!-- Header / Navbar -->
+        <header class="main-header">
+            <div class="container nav-container">
+                <div class="logo">
+                    <img
+                        src="public/images/ag_core_logo.png"
+                        alt="Antigravity Logo"
+                        class="logo-img"
+                    />
+                    <span class="gradient-text">Antigravity</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#workflows">Workflows</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#standards">Standards</a>
+                    <a
+                        href="https://github.com/htrnguyen/ag-core"
+                        target="_blank"
+                        class="icon-link"
+                    >
+                        <i class="ph ph-github-logo"></i>
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="badge">v26.0.0 Release</div>
+                <h1>Antigravity Core</h1>
+                <p class="subtitle">
+                    Enterprise-Grade AI Agent Standards & Workflows
+                </p>
+
+                <!-- Install Command Box -->
+                <button
+                    class="install-box"
+                    onclick="copyCommand()"
+                    aria-label="Copy install command"
+                >
+                    <div class="cmd-content">
+                        <span class="prompt">$</span>
+                        <span class="command" id="cmd"
+                            >npx @htrnguyen/ag-core</span
+                        >
+                    </div>
+                    <div class="action-icon">
+                        <i class="ph ph-copy" id="copy-icon"></i>
+                    </div>
+                    <div class="tooltip" id="tooltip">Copied!</div>
+                </button>
+
+                <p class="small-text">
+                    Interactive CLI • Auto-Updates • Enterprise Ready
+                </p>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="section-block">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>
+                        AG Core injects a "Senior Architect" persona into your
+                        AI workflow.
+                    </p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h3>Initialize</h3>
+                        <p>
+                            Run the npx command to scaffold the
+                            <code>.agent</code> folder in your project root.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h3>Activate</h3>
+                        <p>
+                            Start chat with
+                            <strong>"Xin chào ag-core"</strong> to load rules &
+                            skills.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h3>Execute</h3>
+                        <p>
+                            Use slash commands like <code>/plan</code> or
+                            <code>/review</code> to orchestrate work.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflows" class="section-block alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Core Workflows</h2>
+                    <p>
+                        Standardized processes to govern the software lifecycle.
+                    </p>
+                </div>
+                <table class="workflow-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Action</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>/plan</code></td>
+                            <td>Create Plan</td>
+                            <td>
+                                Generates a detailed
+                                <code>implementation_plan.md</code> and analyzes
+                                requirements.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>/fix</code></td>
+                            <td>Fix Code</td>
+                            <td>
+                                Analyzes and fixes code issues against strict
+                                standards.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>/review</code></td>
+                            <td>Code Review</td>
+                            <td>
+                                Runs <code>checklist.py</code> to audit
+                                Security, Complexity, and Style.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>/commit</code></td>
+                            <td>Git Commit</td>
+                            <td>
+                                Intelligently stages and commits changes with
+                                Conventional Messages.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>/test</code></td>
+                            <td>Gen Tests</td>
+                            <td>
+                                Generates robust unit tests using
+                                <code>pytest</code> or <code>jest</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>/doc</code></td>
+                            <td>Document</td>
+                            <td>
+                                Generates concise, one-line docstrings for
+                                functions/classes.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section-block">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Modular Skills</h2>
+                    <p>
+                        Plug-and-play capabilities that extend the agent's
+                        power.
+                    </p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="ph-duotone ph-shield-check"></i>
+                        </div>
+                        <h3>Automated Audit</h3>
+                        <p>Built-in <code>checklist.py</code> scans for:</p>
+                        <ul class="feature-list">
+                            <li>Security Leaks (API Keys)</li>
+                            <li>Code Complexity (Nesting)</li>
+                            <li>Type Safety (Missing Hints)</li>
+                            <li>Local Imports (Clean Code)</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="ph-duotone ph-git-branch"></i>
+                        </div>
+                        <h3>Git Automation</h3>
+                        <p>Smart wrapper for git operations:</p>
+                        <ul class="feature-list">
+                            <li>Atomic Commits</li>
+                            <li>Conventional Commits</li>
+                            <li>Status Checks</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="ph-duotone ph-file-code"></i>
+                        </div>
+                        <h3>Code Generation</h3>
+                        <p>Safety-first modification:</p>
+                        <ul class="feature-list">
+                            <li>Context Awareness</li>
+                            <li>Rule Enforcement</li>
+                            <li>Verification Steps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="standards" class="section-block alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Coding Standards</h2>
+                    <p>
+                        Enterprise-grade rules enforced by default.
+                        <a
+                            href="https://github.com/htrnguyen/ag-core/tree/main/.agent/rules"
+                            target="_blank"
+                            style="color: var(--primary); font-weight: 600"
+                            >View Full Documentation →</a
+                        >
+                    </p>
+                </div>
+
+                <!-- Standards Grid -->
+                <div class="standards-grid">
+                    <div class="standard-card">
+                        <div class="standard-icon">🏗️</div>
+                        <h3>SOLID Principles</h3>
+                        <ul class="standard-list">
+                            <li>Single Responsibility per module</li>
+                            <li>Open/Closed for extension</li>
+                            <li>Dependency Injection required</li>
+                            <li>Interface Segregation enforced</li>
+                        </ul>
+                    </div>
+
+                    <div class="standard-card">
+                        <div class="standard-icon">🔒</div>
+                        <h3>Security First</h3>
+                        <ul class="standard-list">
+                            <li>No hardcoded secrets</li>
+                            <li>Input validation mandatory</li>
+                            <li>SQL injection prevention</li>
+                            <li>XSS protection built-in</li>
+                        </ul>
+                    </div>
+
+                    <div class="standard-card">
+                        <div class="standard-icon">📏</div>
+                        <h3>Type Safety</h3>
+                        <ul class="standard-list">
+                            <li>Type hints required (Python)</li>
+                            <li>TypeScript preferred (JS)</li>
+                            <li>No <code>any</code> types allowed</li>
+                            <li>Strict null checks enabled</li>
+                        </ul>
+                    </div>
+
+                    <div class="standard-card">
+                        <div class="standard-icon">⚡</div>
+                        <h3>Code Complexity</h3>
+                        <ul class="standard-list">
+                            <li>Max 7 nesting levels</li>
+                            <li>Functions &lt; 50 lines</li>
+                            <li>Files &lt; 500 lines</li>
+                            <li>Cyclomatic complexity &lt; 10</li>
+                        </ul>
+                    </div>
+
+                    <div class="standard-card">
+                        <div class="standard-icon">🎯</div>
+                        <h3>Clean Code</h3>
+                        <ul class="standard-list">
+                            <li>No local imports</li>
+                            <li>No magic numbers</li>
+                            <li>No print/debug statements</li>
+                            <li>DRY principle enforced</li>
+                        </ul>
+                    </div>
+
+                    <div class="standard-card">
+                        <div class="standard-icon">🧪</div>
+                        <h3>Testing Standards</h3>
+                        <ul class="standard-list">
+                            <li>80%+ code coverage</li>
+                            <li>Unit tests required</li>
+                            <li>Integration tests for APIs</li>
+                            <li>E2E tests for critical flows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Code Preview -->
+                <div class="code-preview" style="margin-top: 64px">
+                    <div class="code-header">
+                        <span class="dot red"></span
+                        ><span class="dot yellow"></span
+                        ><span class="dot green"></span>
+                        <span>example.py - Compliant Code</span>
+                    </div>
+                    <pre><code><span class="k">def</span> <span class="f">calculate_metrics</span>(data: <span class="t">List</span>[<span class="t">int</span>]) -&gt; <span class="t">float</span>:
+    <span class="s">"""Calculates core metrics compliant with SOLID principles."""</span>
+    
+    <span class="c"># ✅ No Local Imports (Import at top)</span>
+    <span class="c"># ✅ Type Hints Required</span>
+    <span class="c"># ✅ No Magic Numbers</span>
+    
+    scale_factor = <span class="v">Constants</span>.SCALE_FACTOR
+    
+    <span class="k">if</span> <span class="k">not</span> data:
+        <span class="k">return</span> <span class="n">0.0</span>
+        
+    <span class="k">return</span> <span class="f">sum</span>(data) * scale_factor</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donate Section -->
+        <section class="donate-section">
+            <div class="container">
+                <div class="donate-content-simple">
+                    <h3>Buy me a coffee ☕</h3>
+                    <div class="qr-card">
+                        <img
+                            src="public/images/momo_16_9.jpg"
+                            alt="MoMo QR Code"
+                            class="qr-code"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <img
+                                src="public/images/ag_core_logo.png"
+                                alt="Antigravity Logo"
+                                class="logo-img"
+                            />
+                            <span class="gradient-text">Antigravity</span>
+                        </div>
+                        <p class="footer-tagline">
+                            Elevating Code Quality Through AI-Powered Standards
+                        </p>
+                        <div class="social-links">
+                            <a
+                                href="https://github.com/htrnguyen/ag-core"
+                                target="_blank"
+                                aria-label="GitHub"
+                            >
+                                <i class="ph ph-github-logo"></i>
+                            </a>
+                            <a
+                                href="https://www.npmjs.com/package/@htrnguyen/ag-core"
+                                target="_blank"
+                                aria-label="NPM"
+                            >
+                                <i class="ph ph-package"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <nav class="footer-links">
+                        <div class="footer-section">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li>
+                                    <a href="#how-it-works">How It Works</a>
+                                </li>
+                                <li><a href="#workflows">Workflows</a></li>
+                                <li><a href="#skills">Skills</a></li>
+                                <li><a href="#standards">Standards</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/htrnguyen/ag-core"
+                                        target="_blank"
+                                        >Documentation</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://github.com/htrnguyen/ag-core/issues"
+                                        target="_blank"
+                                        >Report Issue</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://github.com/htrnguyen/ag-core/blob/main/LICENSE"
+                                        target="_blank"
+                                        >MIT License</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <p class="footer-bottom">&copy; 2026 htrnguyen</p>
+            </div>
+        </footer>
+
+        <!-- Script -->
+        <script src="public/js/main.js"></script>
+    </body>
+</html>

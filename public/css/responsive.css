@@ -1,0 +1,251 @@
+/* Large Tablet / Small Desktop (1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--space-4);
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .footer-content {
+        gap: 48px;
+    }
+
+    .standards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .hero {
+        padding: var(--space-8) 0 var(--space-6);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .install-box {
+        max-width: 100%;
+        font-size: var(--font-size-sm);
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .workflow-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .card {
+        padding: var(--space-4);
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .nav-container {
+        padding: 0 var(--space-2);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    .standards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    .standard-card {
+        padding: var(--space-4);
+    }
+
+    .code-preview {
+        font-size: 13px;
+    }
+
+    pre {
+        padding: 16px;
+        font-size: 0.85rem;
+    }
+
+    .section-block {
+        padding: var(--space-4) 0;
+    }
+
+    .section-header {
+        margin-bottom: var(--space-4);
+    }
+
+    .donate-content-simple {
+        max-width: 100%;
+    }
+
+    .donate-content-simple .qr-card {
+        max-width: 100%;
+    }
+
+    .donate-content-simple .qr-code {
+        max-width: 400px;
+    }
+}
+
+/* Small Tablet / Large Phone (576px) */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .hero {
+        padding: var(--space-6) 0 var(--space-4);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: -0.02em;
+    }
+
+    .badge {
+        font-size: 0.65rem;
+        padding: 4px 12px;
+    }
+
+    .install-box {
+        font-size: var(--font-size-xs);
+        padding: var(--space-2);
+        border-radius: var(--border-radius-sm);
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .footer-brand .logo {
+        justify-content: center;
+    }
+
+    .footer-brand {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .footer-tagline {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        padding: 24px 0;
+        font-size: 0.8rem;
+    }
+
+    .code-preview {
+        border-radius: 8px;
+        font-size: 12px;
+    }
+
+    pre {
+        padding: 12px;
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .code-header {
+        padding: 8px 12px;
+    }
+
+    .donate-content-simple .qr-code {
+        max-width: 320px;
+    }
+
+    .step-number {
+        font-size: 3rem;
+    }
+
+    .section-header p {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Small Phone (400px) */
+@media (max-width: 400px) {
+    .container {
+        padding: 0 var(--space-2);
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .install-box {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .action-icon {
+        margin-left: 0;
+    }
+
+    .donate-content-simple .qr-code {
+        max-width: 260px;
+    }
+
+    .workflow-table th,
+    .workflow-table td {
+        padding: var(--space-2) var(--space-2);
+        font-size: var(--font-size-xs);
+    }
+}

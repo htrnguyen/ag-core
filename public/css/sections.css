@@ -1,0 +1,97 @@
+.section-block {
+    padding: var(--space-6) 0;
+}
+
+.section-block.alt-bg {
+    background: rgba(245, 245, 247, 0.4);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+}
+
+.section-header h2 {
+    margin-bottom: var(--space-3);
+}
+
+.section-header p {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+}
+
+.step-card {
+    text-align: left;
+}
+
+.step-number {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: rgba(0, 122, 255, 0.12);
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.step-card h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+    color: var(--text);
+}
+
+.step-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.workflow-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background: var(--bg);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.workflow-table th,
+.workflow-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.workflow-table th {
+    background: var(--bg-secondary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.workflow-table tr:hover {
+    background: var(--bg-tertiary);
+}
+
+.workflow-table tr:last-child td {
+    border-bottom: none;
+}
+
+.workflow-table code {
+    background: var(--bg-secondary);
+    color: var(--primary);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--border-radius-sm);
+    font-family: "SF Mono", "Monaco", "Consolas", monospace;
+    font-size: var(--font-size-sm);
+}
