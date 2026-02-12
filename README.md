@@ -1,145 +1,168 @@
-# Antigravity Kit
+# AG Core
 
-> AI Agent templates with Skills, Agents, and Workflows
+> **The Core of Antigravity** - A lightweight, extensible AI Agent framework.
+>
+> _Forked from [vudovn/antigravity-kit](https://github.com/vudovn/antigravity-kit) by [htrnguyen](https://github.com/htrnguyen)_
 
-<div  align="center">
-    <a href="https://unikorn.vn/p/antigravity-kit?ref=unikorn" target="_blank"><img src="https://unikorn.vn/api/widgets/badge/antigravity-kit?theme=dark" alt="Antigravity Kit - Nổi bật trên Unikorn.vn" style="width: 210px; height: 54px;" width="210" height="54" /></a>
-    <a href="https://unikorn.vn/p/antigravity-kit?ref=unikorn" target="_blank"><img src="https://unikorn.vn/api/widgets/badge/antigravity-kit/rank?theme=dark&type=daily" alt="Antigravity Kit - Hàng ngày" style="width: 250px; height: 64px;" width="250" height="64" /></a>
-    <a href="https://launch.j2team.dev/products/antigravity-kit" target="_blank"><img src="https://launch.j2team.dev/badge/antigravity-kit/dark" alt="Antigravity Kit on J2TEAM Launch" width="250" height="54" /></a>
-</div>
+AG Core (Advanced Generator Core) provides the essential kernel for building your own AI agent system. Unlike bloated kits, this package focuses on the fundamental **Orchestrator** and core workflows, giving you a clean slate to build upon.
 
-## Quick Install
+## 🚀 Quick Install
 
 ```bash
-npx @vudovn/ag-kit init
+npx @htrnguyen/ag-core
 ```
 
-Or install globally:
+This command will interactively guide you through the setup.
+
+### Other Commands
 
 ```bash
-npm install -g @vudovn/ag-kit
-ag-kit init
+# Update existing .agent folder
+npx @htrnguyen/ag-core update
+
+# Remove .agent folder
+npx @htrnguyen/ag-core remove
 ```
 
-This installs the `.agent` folder containing all templates into your project.
+This commands installs the `.agent` folder containing the core templates into your project.
 
-### ⚠️ Important Note on `.gitignore`
-If you are using AI-powered editors like **Cursor** or **Windsurf**, adding the `.agent/` folder to your `.gitignore` may prevent the IDE from indexing the workflows. This results in slash commands (like `/plan`, `/debug`) not appearing in the chat suggestion dropdown.
+### ⚠️ Important: IDE Configuration
 
-**Recommended Solution:**
-To keep the `.agent/` folder local (not tracked by Git) while maintaining AI functionality:
-1. Ensure `.agent/` is **NOT** in your project's `.gitignore`.
-2. Instead, add it to your local exclude file: `.git/info/exclude`
+If you use **Cursor** or **Windsurf**:
 
-## What's Included
+1.  **Do NOT** add `.agent/` to your `.gitignore`.
+2.  Instead, add `.agent/` to `.git/info/exclude`.
+3.  This ensures the AI can index the context while keeping your repo clean.
 
-| Component     | Count | Description                                                        |
-| ------------- | ----- | ------------------------------------------------------------------ |
-| **Agents**    | 20    | Specialist AI personas (frontend, backend, security, PM, QA, etc.) |
-| **Skills**    | 37    | Domain-specific knowledge modules                                  |
-| **Workflows** | 11    | Slash command procedures                                           |
+## 📦 What's Included?
 
+| Component                       | Description                                                                        |
+| :------------------------------ | :--------------------------------------------------------------------------------- |
+| **🤖 Antigravity Orchestrator** | The central "Senior Architect" persona that governs code generation.               |
+| **🛠️ Basic Skills**             | Essential capabilities like `basic_code_modification` with built-in safety checks. |
+| **⚡ Core Workflows**           | `/fix`, `/plan`, `/review`, `/help` to cover the software development lifecycle.   |
 
-## Usage
+## 📊 Core Architecture
 
-### Using Agents
+### Flow Diagram
 
-**No need to mention agents explicitly!** The system automatically detects and applies the right specialist(s):
+```mermaid
+graph TD
+    UserRequest[USER REQUEST] --> Classification[REQUEST CLASSIFICATION]
 
-```
-You: "Add JWT authentication"
-AI: 🤖 Applying @security-auditor + @backend-specialist...
+    subgraph Core System
+        Classification -->|Slash Command| Workflow[WORKFLOW EXECUTION]
+        Classification -->|General Request| Orchestrator[ANTIGRAVITY ORCHESTRATOR]
+    end
 
-You: "Fix the dark mode button"
-AI: 🤖 Using @frontend-specialist...
+    Workflow -->|/fix, /plan...| AgentInit
+    Orchestrator --> AgentInit
 
-You: "Login returns 500 error"
-AI: 🤖 Using @debugger for systematic analysis...
-```
+    AgentInit[AGENT INITIALIZATION] --> SkillLoading[SKILL LOADING PROTOCOL]
 
-**How it works:**
+    subgraph Execution
+        SkillLoading --> TaskExec[TASK EXECUTION]
+        TaskExec --> Validation[RULE ENFORCEMENT]
+    end
 
-- Analyzes your request silently
-
-- Detects domain(s) automatically (frontend, backend, security, etc.)
-- Selects the best specialist(s)
-- Informs you which expertise is being applied
-- You get specialist-level responses without needing to know the system architecture
-
-**Benefits:**
-
-- ✅ Zero learning curve - just describe what you need
-- ✅ Always get expert responses
-- ✅ Transparent - shows which agent is being used
-- ✅ Can still override by mentioning agent explicitly
-
-### Using Workflows
-
-Invoke workflows with slash commands:
-
-| Command          | Description                           |
-| ---------------- | ------------------------------------- |
-| `/brainstorm`    | Explore options before implementation |
-| `/create`        | Create new features or apps           |
-| `/debug`         | Systematic debugging                  |
-| `/deploy`        | Deploy application                    |
-| `/enhance`       | Improve existing code                 |
-| `/orchestrate`   | Multi-agent coordination              |
-| `/plan`          | Create task breakdown                 |
-| `/preview`       | Preview changes locally               |
-| `/status`        | Check project status                  |
-| `/test`          | Generate and run tests                |
-| `/ui-ux-pro-max` | Design with 50 styles                 |
-
-Example:
-
-```
-/brainstorm authentication system
-/create landing page with hero section
-/debug why login fails
+    Validation --> Result[RESULT DELIVERY]
 ```
 
-### Using Skills
+## 🛠️ Usage
 
-Skills are loaded automatically based on task context. The AI reads skill descriptions and applies relevant knowledge.
+### 🌟 Activation
 
-## CLI Tool
+To activate the Antigravity Orchestrator and ensure all rules are loaded, **ALWAYS** start your new chat session with:
 
-| Command         | Description                               |
-| --------------- | ----------------------------------------- |
-| `ag-kit init`   | Install `.agent` folder into your project |
-| `ag-kit update` | Update to the latest version              |
-| `ag-kit status` | Check installation status                 |
+> **"Xin chào ag-core"**
 
-### Options
+(or simply _"Hello ag-core"_).
 
-```bash
-ag-kit init --force        # Overwrite existing .agent folder
-ag-kit init --path ./myapp # Install in specific directory
-ag-kit init --branch dev   # Use specific branch
-ag-kit init --quiet        # Suppress output (for CI/CD)
-ag-kit init --dry-run      # Preview actions without executing
-```
+This phrase signals the AI to:
 
-## Documentation
+1.  Load the **Antigravity Orchestrator** persona.
+2.  Scan `.agent/rules/` for strict coding standards.
+3.  Prepare the `.agent/skills/` for execution.
 
-- **[Web App Example](https://antigravity-kit.vercel.app//docs/guide/examples/brainstorm)** - Step-by-step guide to creating a web application
-- **[Online Docs](https://antigravity-kit.vercel.app//docs)** - Browse all documentation online
+### The Orchestrator
 
-## Buy me coffee
+The **Antigravity Orchestrator** is your default agent. It enforces:
 
-<p align="center">
-  <a href="https://buymeacoffee.com/vudovn">
-    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" />
-  </a>
-</p>
+- **Professionalism**: Clear, concise communication.
+- **Standards**: Strict adherence to linting and style rules.
+- **Security**: Proactive checks for secrets and vulnerabilities.
 
-<p align="center"> - or - </p>
+### Slash Commands
 
-<p align="center">
-  <img src="https://img.vietqr.io/image/mbbank-0779440918-compact.jpg" alt="Buy me coffee" width="200" />
-</p>
+| Command   | Action         | Description                                        |
+| :-------- | :------------- | :------------------------------------------------- |
+| `/plan`   | Create Plan    | Generates a detailed implementation plan           |
+| `/fix`    | Fix Code       | Analyzes and fixes code issues against standards   |
+| `/commit` | Commit Code    | Intelligently commits changes with atomic messages |
+| `/test`   | Generate Tests | Creates unit tests for selected code               |
+| `/doc`    | Document Code  | Generates concise one-line docstrings              |
+| `/review` | Code Review    | Reviews code for architectural compliance          |
+| `/help`   | Help           | Shows system usage and capabilities                |
 
-## License
+### Skill System
 
-MIT © Vudovn
+Skills are modular capabilities that the agent can load on demand.
+
+**Current Core Skills:**
+
+- **basic_code_modification**: The fundamental ability to modify code safely.
+    - **Context Check**: Reads standards and related files.
+    - **Safety Check**: Verifies no secrets, no rule violations.
+    - **Implementation**: Applies changes with explanatory comments.
+    - **Verification**: Suggests linting and testing commands.
+
+- **git_automation**: The ability to manage git operations.
+    - **Atomic Commits**: Groups changes by logical unit.
+    - **Conventional Messages**: Formats commit messages (feat, fix, etc.).
+    - **Status Check**: Analyzes git status and diffs.
+
+- **test_generation**: Creates robust unit tests.
+    - **Analysis**: Understands logic and edge cases.
+    - **Frameworks**: Supports pytest, jest, etc.
+
+- **document_generation**: Maintains concise documentation.
+    - **One-Line Rule**: Enforces simple summary descriptions.
+    - **No Redundancy**: Prevents duplicate explanations.
+
+### Rule Enforcement
+
+The system is built on a "Compliance First" architecture. Before generating code, the agent **MUST** reference:
+
+- `.agent/rules/antigravity_standards.md`
+
+## 🚀 Extensibility
+
+AG Core is designed to be the _kernel_ of your AI system. You can expand it by:
+
+1.  **Adding Agents**: Create new `.md` files in `.agent/agents/`.
+2.  **Adding Skills**: Create new folders in `.agent/skills/`.
+3.  **Adding Workflows**: Define new slash commands in `.agent/workflows/`.
+
+## 🔧 CLI Reference
+
+| `npx @htrnguyen/ag-core` | Interactive install/init |
+| `npx @htrnguyen/ag-core update` | Update .agent rules and skills |
+| `npx @htrnguyen/ag-core remove` | Remove .agent folder from project |
+
+## 💖 Support This Project
+
+If AG-Core has improved your development workflow, consider supporting its continued development:
+
+- 🚀 **Faster feature releases**
+- 🛠️ **Priority bug fixes**
+- 📚 **Enhanced documentation**
+- 💡 **Community-driven improvements**
+
+**Donate via MoMo**: Scan the QR code on the [landing page](https://htrnguyen.github.io/ag-core) or in `public/images/momo.jpg`
+
+Your support helps keep this project active and growing! 🙏
+
+## 📄 License
+
+MIT © [htrnguyen](https://github.com/htrnguyen)
+Based on work by [vudovn](https://github.com/vudovn).
