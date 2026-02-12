@@ -1,6 +1,6 @@
 {
   "name": "@htrnguyen/ag-core",
-  "version": "26.0.0",
+  "version": "26.2.0",
   "description": "AI Agent templates - Skills, Agents, and Workflows for enhanced coding assistance",
   "bin": {
     "ag-core": "./bin/cli.js"
