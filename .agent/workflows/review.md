@@ -4,6 +4,9 @@ description: Review code with automated checks and specialized analysis
 
 # Review Workflow
 
+> [!IMPORTANT]
+> **Scope Rule**: Automatically exclude all files and directories listed in `.gitignore` from the review process.
+
 1.  **Automated Sanity Check**
     - Run the checklist script to catch low-hanging fruit:
 

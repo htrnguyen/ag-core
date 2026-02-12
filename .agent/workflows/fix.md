@@ -13,6 +13,7 @@ description: Fix code issues following Antigravity standards
     - Check for violations of:
         - Security standards (`.agent/rules/security.md`)
         - Coding standards (`.agent/rules/coding_standards.md`)
+        - Refactoring standards (`.agent/rules/refactoring.md`)
 
 3.  **Apply Fix**
     - Use `basic_code_modification` skill if needed.

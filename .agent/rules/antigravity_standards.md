@@ -8,6 +8,7 @@ This is the MASTER standard file. Adherence to all rules in this folder is MANDA
 @import .agent/rules/coding_standards.md
 @import .agent/rules/fastapi.md
 @import .agent/rules/security.md
+@import .agent/rules/refactoring.md
 @import .agent/rules/testing.md
 
 ## Architecture & Infrastructure

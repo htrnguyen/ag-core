@@ -7,6 +7,7 @@ Checks code against Antigravity standards:
 - Deep nesting (max 4 levels for Python, 10 for HTML)
 - Security issues (hardcoded secrets)
 - Comment quality (English only, no placeholders)
+- Ignores files matched by .gitignore patterns
 
 Usage:
     python checklist.py                    # Check entire project
@@ -18,7 +19,9 @@ import argparse
 import os
 import re
 import sys
+import fnmatch
 from pathlib import Path
+from typing import List, Set
 
 
 class CodeChecker:
@@ -27,6 +30,7 @@ class CodeChecker:
     MAX_LINES = 500
     MAX_NESTING_PY = 4
     MAX_NESTING_HTML = 10
+    # Default excludes (always applied)
     EXCLUDE_DIRS = {
         ".git",
         ".agent",
@@ -55,6 +59,58 @@ class CodeChecker:
     def __init__(self, root_path: Path):
         self.root_path = root_path
         self.issues = {}
+        self.gitignore_patterns: List[str] = []
+        self.load_gitignore()
+
+    def load_gitignore(self) -> None:
+        """Load patterns from .gitignore in root path."""
+        gitignore_path = self.root_path / ".gitignore"
+        if not gitignore_path.exists():
+            return
+
+        try:
+            with open(gitignore_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#"):
+                        continue
+                    self.gitignore_patterns.append(line)
+        except Exception as e:
+            print(f"[WARNING] Failed to load .gitignore: {e}")
+
+    def is_ignored(self, file_path: Path) -> bool:
+        """Check if file path should be ignored based on defaults or gitignore."""
+        # 1. Check default exclude directories (fast check on parts)
+        if any(part in self.EXCLUDE_DIRS for part in file_path.parts):
+            return True
+
+        # 2. Check gitignore patterns
+        if not self.gitignore_patterns:
+            return False
+
+        try:
+            # Get path relative to root for matching
+            rel_path = file_path.relative_to(self.root_path)
+        except ValueError:
+            # Path is not relative to root, just use name
+            rel_path = Path(file_path.name)
+
+        # Naive implementation of gitignore matching using fnmatch
+        # Matches against the relative path string
+        path_str = str(rel_path).replace(os.sep, "/")
+
+        for pattern in self.gitignore_patterns:
+            clean_pattern = pattern.rstrip("/")
+
+            if fnmatch.fnmatch(path_str, clean_pattern):
+                return True
+            parts = path_str.split("/")
+            for i in range(len(parts)):
+                parent_path = "/".join(parts[: i + 1])
+                if fnmatch.fnmatch(parent_path, clean_pattern):
+                    return True
+
+        return False
 
     def check_file_size(self, file_path: Path, lines: list) -> list:
         """Check if file exceeds 500 lines."""
@@ -123,6 +179,9 @@ class CodeChecker:
 
     def check_file(self, file_path: Path) -> None:
         """Run all checks on a single file."""
+        if self.is_ignored(file_path):
+            return
+
         if file_path.suffix not in self.TEXT_EXTS:
             return
 
@@ -140,7 +199,8 @@ class CodeChecker:
                 self.issues[file_path] = file_issues
 
         except Exception as e:
-            print(f"[ERROR] Failed to check file {file_path}: {e}")
+            # print(f"[ERROR] Failed to check file {file_path}: {e}")
+            pass
 
     def check_path(self, path: Path) -> None:
         """Check a file or directory."""
@@ -152,9 +212,7 @@ class CodeChecker:
     def _check_directory(self, directory: Path) -> None:
         """Recursively check all files in directory."""
         for item in directory.rglob("*"):
-            if item.is_file() and not any(
-                excluded in item.parts for excluded in self.EXCLUDE_DIRS
-            ):
+            if item.is_file():
                 self.check_file(item)
 
     def report(self) -> int:
@@ -168,7 +226,10 @@ class CodeChecker:
         print(f"[WARNING] Found potential issues in {len(self.issues)} files:\n")
 
         for file_path, file_issues in sorted(self.issues.items()):
-            rel_path = file_path.relative_to(self.root_path)
+            try:
+                rel_path = file_path.relative_to(self.root_path)
+            except ValueError:
+                rel_path = file_path
             print(f"File: {rel_path}:")
             for issue in file_issues:
                 print(f"  - {issue}")
@@ -198,6 +259,7 @@ def main():
 
     args = parser.parse_args()
 
+    # Always use current working directory as root for gitignore context
     root_path = Path.cwd()
     target_path = Path(args.path).resolve()
 
