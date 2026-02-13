@@ -1,27 +1,46 @@
-## Security Standard
+---
+trigger: always_on
+description: Enterprise Security & OWASP Standards
+---
 
-### Authentication & Authorization
+# Enterprise Security Standards
 
-- **Auth**: OAuth2/JWT via `Depends()`.
-- **Azure**: Use Managed Identity for Azure services.
-- **RBAC**: Implement Role-based Access Control.
+## 1. Input Validation (Zero Trust)
 
-### Secrets Management
+- **Mandatory**: All external input (API, CLI, File) MUST be validated.
+- **Tool**: Use `Pydantic` for strict schema validation.
+- **Sanitization**: Strip reckless whitespace, validate regex for strings (emails, UUIDs).
+- **Prohibited**: Never use `eval()`, `exec()`, or `pickle.load()` on untrusted data.
 
-- **Storage**: Azure Key Vault or Secret Manager.
-- **Code**: NO hardcoded keys/secrets/tokens.
-- **Rotation**: Support periodic rotation of keys.
+## 2. Secrets Management
 
-### Web/API Protections
+- **Strict Rule**: NO hardcoded secrets (API Keys, Passwords, Tokens) in code or comments.
+- **Mechanism**: Use `os.environ` or `pydantic-settings`.
+- **Formatting**: Env vars must be `UPPER_CASE`.
 
-- **HTTPS**: TLS 1.2+ required.
-- **CORS**: Restricted to trusted domains only.
-- **Headers**: HSTS, CSP, X-Content-Type-Options, X-Frame-Options.
-- **Input**: Sanitize all inputs. No raw SQL strings.
+## 3. OWASP Top 10 Mitigations
 
-### Operations
+### Injection
 
-- **Logs**: Sanitize PII (No Emails/Phones/SSNs).
-- **Audit**: Log sensitive actions (Access, Modification, Deletion).
-- **Scanning**: SAST (Bandit/Snyk) in CI pipeline.
-- **Errors**: No stack traces in responses.
+- **SQL**: Use ORM (SQLAlchemy) or parameterized queries. NEVER string concatenation.
+- **Command**: Avoid `subprocess.run(shell=True)`. Use list arguments: `["ls", "-l"]`.
+
+### Broken Authentication
+
+- **Rules**:
+    - Never log session tokens / JWTs.
+    - Use established libraries (Passlib, Bcrypt) for hashing.
+
+### Logging
+
+- **Clean Logs**: Ensure no PII (Emails, Phones, CCs) enters logs.
+- **Traceability**: Log `user_id` context where available (but not auth tokens).
+
+## 4. Output Encoding
+
+- When returning HTML/XML, ensure entities are escaped (FastAPI/Jinja2 does this by default, but be careful with `MarkupSafe`).
+
+## 5. Dependency Safety
+
+- Regular scans with `pip-audit`.
+- No abandoned packages (< 1 year updates) without architect approval.
