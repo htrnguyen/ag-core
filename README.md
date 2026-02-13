@@ -34,11 +34,11 @@ If you use **Cursor** or **Windsurf**:
 
 ## What's Included
 
-| Component                    | Description                                                                 |
-| :--------------------------- | :-------------------------------------------------------------------------- |
-| **Antigravity Orchestrator** | The central "Senior Architect" persona that governs code generation.        |
-| **Basic Skills**             | Essential capabilities like `basic_code_modification` with safety checks.   |
-| **Core Workflows**           | `/fix`, `/plan`, `/review`, `/help` for the software development lifecycle. |
+| Component                    | Description                                                                                             |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------ |
+| **Antigravity Orchestrator** | The central "Senior Architect" persona that governs code generation.                                    |
+| **Basic Skills**             | Essential capabilities like `basic_code_modification` with safety checks.                               |
+| **Core Workflows**           | `/fix`, `/plan`, `/review`, `/help`, `/commit`, `/test`, `/doc` for the software development lifecycle. |
 
 ## Core Architecture
 
@@ -108,6 +108,7 @@ Skills are modular capabilities that the agent can load on demand.
 - **git_automation**: Manage git operations with atomic commits and conventional messages.
 - **test_generation**: Create robust unit tests with edge-case analysis.
 - **document_generation**: Maintain concise, non-redundant documentation.
+- **dependency_management**: Manage Python dependencies with security auditing and strict version pinning.
 
 ### Rule Enforcement
 

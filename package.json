@@ -1,6 +1,9 @@
 {
   "name": "@htrnguyen/ag-core",
-  "version": "26.3.0",
+  "version": "26.3.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "AI Agent templates - Skills, Agents, and Workflows for enhanced coding assistance",
   "bin": {
     "ag-core": "./bin/cli.js"
@@ -9,6 +12,14 @@
     "bin",
     ".agent"
   ],
+  "scripts": {
+    "test": "node --test tests/cli.test.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/htrnguyen/ag-core.git"
@@ -26,5 +37,9 @@
     "templates"
   ],
   "author": "htrnguyen",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  }
 }

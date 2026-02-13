@@ -1,46 +1,62 @@
 ---
 trigger: always_on
-description: Enterprise Security & OWASP Standards
+description: Enterprise Security, Compliance & OWASP Standards
 ---
 
 # Enterprise Security Standards
 
-## 1. Input Validation (Zero Trust)
+## 1. Authentication & Authorization
+
+- **Protocol**: OAuth2 + JWT (or equivalent).
+- **Validation**: Expiration and Signature verification REQUIRED.
+- **RBAC**: Enforce Role-Based Access Control on all endpoints.
+- **Least Privilege**: Grant only necessary permissions. Review periodically.
+
+## 2. Input Validation (Zero Trust)
 
 - **Mandatory**: All external input (API, CLI, File) MUST be validated.
 - **Tool**: Use `Pydantic` for strict schema validation.
-- **Sanitization**: Strip reckless whitespace, validate regex for strings (emails, UUIDs).
-- **Prohibited**: Never use `eval()`, `exec()`, or `pickle.load()` on untrusted data.
+- **Limits**: Enforce max token lengths and payload sizes.
+- **Files**: Validate file uploads strictly (MIME, Magic Bytes).
+- **Sanitization**: Strip reckless whitespace, validate regex for strings.
+- **Prohibited**: Never use `eval()`, `exec()`, or `pickle.load()`.
 
-## 2. Secrets Management
+## 3. Secrets Management
 
-- **Strict Rule**: NO hardcoded secrets (API Keys, Passwords, Tokens) in code or comments.
-- **Mechanism**: Use `os.environ` or `pydantic-settings`.
+- **Strict Rule**: NO hardcoded secrets. Never commit secrets to git.
+- **Mechanism**: Use `os.environ`, `pydantic-settings`, Key Vault, or Secret Manager.
 - **Formatting**: Env vars must be `UPPER_CASE`.
+- **Rotation**: API keys and secrets must rotate periodically.
 
-## 3. OWASP Top 10 Mitigations
+## 4. Data Protection
+
+- **Encryption**: Encrypt sensitive data At-Rest.
+- **Transport**: Use TLS (HTTPS) for ALL communication.
+- **Network**: Restrict Database access via private network/allow-listing.
+
+## 5. OWASP Top 10 Mitigations (Application Security)
 
 ### Injection
 
 - **SQL**: Use ORM (SQLAlchemy) or parameterized queries. NEVER string concatenation.
-- **Command**: Avoid `subprocess.run(shell=True)`. Use list arguments: `["ls", "-l"]`.
+- **Command**: Avoid `subprocess.run(shell=True)`. Use list arguments.
 
 ### Broken Authentication
 
-- **Rules**:
-    - Never log session tokens / JWTs.
-    - Use established libraries (Passlib, Bcrypt) for hashing.
+- **Rules**: Never log session tokens/JWTs. Use Bcrypt/Argon2 for hashing.
 
-### Logging
+### Logging Security
 
 - **Clean Logs**: Ensure no PII (Emails, Phones, CCs) enters logs.
-- **Traceability**: Log `user_id` context where available (but not auth tokens).
+- **Traceability**: Log `user_id` context where available.
 
-## 4. Output Encoding
+### Output Encoding
 
-- When returning HTML/XML, ensure entities are escaped (FastAPI/Jinja2 does this by default, but be careful with `MarkupSafe`).
+- **XSS Prevention**: Ensure HTML/XML entities are escaped when returning content.
 
-## 5. Dependency Safety
+## 6. Dependency Safety & Compliance
 
-- Regular scans with `pip-audit`.
-- No abandoned packages (< 1 year updates) without architect approval.
+- **Versioning**: Pin dependency versions (strict `==` or lockfiles).
+- **Scanning**: Regular scans with `pip-audit` or `Snyk` in CI/CD.
+- **SBOM**: Software Bill of Materials required for audit.
+- **Policy**: No abandoned packages (< 1 year updates) without architect approval.

@@ -20,9 +20,7 @@ This is the MASTER standard file. Adherence to all rules in this folder is MANDA
 
 ## Security & Privacy
 
-@import .agent/rules/enterprise_security.md
 @import .agent/rules/data_privacy.md
-@import .agent/rules/responsible_ai.md
 
 ## SRE & Operations
 
