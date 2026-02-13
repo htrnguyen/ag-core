@@ -7,7 +7,13 @@ description: Review code with automated checks and specialized analysis
 > [!IMPORTANT]
 > **Scope Rule**: Automatically exclude all files and directories listed in `.gitignore` from the review process.
 
-1.  **Automated Sanity Check**
+1.  **Scope Definition**
+    - **Identify Context**: Is this a PR review, a security audit, or a quick sanity check?
+    - **Select Depth**:
+        - _Quick_: Focus on logic errors and critical standards.
+        - _Deep_: Include architecture, maintainability, and full compliance.
+
+2.  **Automated Sanity Check**
     - Run the checklist script to catch low-hanging fruit:
 
     ```bash
@@ -16,11 +22,11 @@ description: Review code with automated checks and specialized analysis
 
     - Resolve any `[SECURITY]` or `[SIZE]` warnings immediately.
 
-2.  **Load Standards**
+3.  **Load Standards**
     - Read `.agent/rules/antigravity_standards.md`.
     - Check specific domain rules if applicable (e.g., `fastapi.md`, `testing.md`).
 
-3.  **Human/AI Audit**
+4.  **Human/AI Audit**
     - Analyze the target code for:
         - **Logic Errors**: Edge cases, race conditions.
         - **Performance**: N+1 queries, unoptimized loops.
@@ -64,7 +70,7 @@ description: Review code with automated checks and specialized analysis
             - [REQUIRED] Feature detection (@supports, if checks)
             - [REQUIRED] Fallbacks for modern features
 
-4.  **Report**
+5.  **Report**
     - List all findings prioritized by severity.
     - Provide specific recommendations for each finding.
     - **For each issue, include**:

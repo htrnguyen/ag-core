@@ -11,22 +11,30 @@ Use this workflow to clean up your workspace and commit changes professionally.
 1.  **Load Skill**:
     - Load `.agent/skills/git_automation` to understand commit standards.
 
-2.  **Analyze State**:
-    - Run `git status` to see what is modified/untracked.
-    - Run `git diff` (and `git diff --cached` if needed) to understand the context of changes.
+2.  **Context & History Analysis**:
+    - **Read Files**: Use `view_file` to read the _current_ state of modified files. Do not rely on memory.
+    - **Check History**: specific user instructions or reasoning from the recent chat history to explain _why_ changes were made.
+    - **Identify Logical Units**: Group changes into atomic units (e.g., "Refactor Auth" vs "Fix Typo").
 
-3.  **Propose Plan**:
-    - Suggest a list of commits to the user.
+3.  **Visual Diff Check**:
+    - Run `git diff` to see the exact lines changed.
+    - Ensure no debug prints or commented-out code are included.
+
+4.  **Propose Atomic Plan**:
+    - Suggest a list of commits. Each must be:
+        - **Atomic**: One logical change per commit.
+        - **Concise**: Message < 50 chars for summary.
+        - **Conventional**: `type(scope): message`.
     - Example:
         > I will make 2 commits:
         >
-        > 1. `feat(auth): adding login route` (files: auth.ts, route.ts)
-        > 2. `style(ui): formatting login button` (files: button.css)
+        > 1. `feat(auth): add login route` (logic: adds endpoint)
+        > 2. `fix(ui): align login button` (logic: css check)
 
-4.  **Execute (Atomic Loop)**:
-    - **Step 4a**: Add files for the first logical group (`git add ...`).
-    - **Step 4b**: Commit with message (`git commit -m "..."`).
-    - **Step 4c**: Repeat for remaining groups.
+5.  **Execute (Atomic Loop)**:
+    - **Step 5a**: Add files for the group (`git add ...`).
+    - **Step 5b**: Commit with **concise** message (`git commit -m "..."`).
+    - **Step 5c**: Repeat.
 
-5.  **Final Status**:
+6.  **Final Status**:
     - Run `git status` one last time to confirm workspace is clean.
