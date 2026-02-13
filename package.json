@@ -1,6 +1,6 @@
 {
   "name": "@htrnguyen/ag-core",
-  "version": "26.3.2",
+  "version": "26.3.3",
   "publishConfig": {
     "access": "public"
   },

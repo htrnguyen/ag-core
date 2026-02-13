@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **CI/CD**: `publish.yml` configuration (Scoped package support).
 - **Rules**: Consolidate Security and AI Governance rules.
 
+## [26.3.3] - 2026-02-14
+
+### Fixed
+
+- **Release**: Version bump to resolve npm registry conflict.
+
 ## [26.3.2] - 2026-02-14
 
 ### Changed
